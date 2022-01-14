@@ -1,7 +1,7 @@
 import 'package:bloc_network_example/bloc/user_event.dart';
 import 'package:bloc_network_example/bloc/user_state.dart';
 import 'package:bloc_network_example/models/user.dart';
-import 'package:bloc_network_example/servises/user_repository.dart';
+import 'package:bloc_network_example/services/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

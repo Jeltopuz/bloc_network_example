@@ -1,5 +1,5 @@
 import 'package:bloc_network_example/models/user.dart';
-import 'package:bloc_network_example/servises/user_api_provider.dart';
+import 'package:bloc_network_example/services/user_api_provider.dart';
 
 class UsersRepository {
   final _usersProvider = UserProvider();
