@@ -1,4 +1,5 @@
 import 'package:bloc_network_example/bloc/user_bloc.dart';
+import 'package:bloc_network_example/bloc/user_event.dart';
 import 'package:bloc_network_example/services/user_repository.dart';
 import 'package:bloc_network_example/widgets/action_buttons.dart';
 import 'package:bloc_network_example/widgets/user_list.dart';
@@ -11,8 +12,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final usersRepository = UsersRepository();
+
     return BlocProvider<UserBloc>(
-      create: (context) => UserBloc(usersRepository: usersRepository),
+      create: (context) =>
+          UserBloc(usersRepository: usersRepository)..add(UserLoadEvent()),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('usersList'),

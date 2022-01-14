@@ -7,10 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UsersRepository usersRepository;
+  List<User> _loadedUserList;
 
   UserBloc({
     @required this.usersRepository,
-  }) : super(UserEmptyState()) {
+  }) : super(UserLoadingState()) {
     on<UserLoadEvent>((event, emit) async {
       await loading(emit);
     });
@@ -20,7 +21,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> loading(Emitter<UserState> emit) async {
     emit(UserLoadingState());
     try {
-      final List<User> _loadedUserList = await usersRepository.getAllUsers();
+      _loadedUserList ??= await usersRepository.getAllUsers();
       emit(UserLoadedState(
         loadedUser: _loadedUserList,
       ));
